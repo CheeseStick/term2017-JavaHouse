@@ -1,5 +1,5 @@
 
-    <!-- 처음 접속 하였을때 나타나는 웹페이지 입니다. -->
+    <!-- 다음은 로그인이 완료 되었을때 나타나는 페이지 입니다. (수정하기 전이라 index.html과 동일) -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>JAVA HOUSE - Start page</title>
+    <title>Welcome to JAVA HOUSE</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

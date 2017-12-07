@@ -1,10 +1,10 @@
 
-    <!-- 회원가입 할때  나타나는 페이지 입니다. (DB와 연동하지 않고 폼만 만듬) -->
+    <!-- 로그인 할때 나타나는 웹페이지 입니다. (DB와 연동하지 않고 폼만 만듬) -->
 
 <!doctype html>
 <html lang="en">
   <head>
-    <title>JAVA HOUSE - Signup page</title>
+    <title>JAVA HOUSE - Signin page</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,59 +52,16 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+<legend><center><h2><b>Login Form</b></h2></center></legend><br>
 
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>  
+  <label class="col-md-4 control-label">User Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-  <div class="form-group"> 
-  <label class="col-md-4 control-label">Address</label>
-    <div class="col-md-4 selectContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="department" class="form-control selectpicker">
-      <option value="">Select your Department/Office</option>
-      <option>서울</option>
-      <option>부산</option>
-      <option >대구</option>
-      <option >대전</option>
-      <option >인천</option>
-      <option >광주</option>
-
-    </select>
-  </div>
-</div>
-</div>
-  
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Username</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="user_name" placeholder="Username" class="form-control"  type="text">
+  <input  name="first_name" placeholder="id" class="form-control"  type="text">
     </div>
   </div>
 </div>
@@ -116,53 +73,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="user_password" placeholder="Password" class="form-control"  type="password">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Confirm Password</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-       <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-
-<!-- Text input-->
-       
-<div class="form-group">
-  <label class="col-md-4 control-label">Phone No.</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contact_no" placeholder="(010)" class="form-control" type="text">
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label">birthday</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contact_no" placeholder="1999-01-01" class="form-control" type="text">
+  <input name="last_name" placeholder="password" class="form-control"  type="text">
     </div>
   </div>
 </div>
