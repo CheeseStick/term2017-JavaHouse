@@ -1,4 +1,1 @@
-.settings
-.classpath
-.project
-/build/
+node_modules
