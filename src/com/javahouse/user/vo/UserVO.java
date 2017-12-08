@@ -12,7 +12,7 @@ public class UserVO {
 	private String phoneNo;
 	private String email;
 	private String ssn;
-	
+
 	private String address;
 	private String addressDetail;
 	
@@ -42,6 +42,10 @@ public class UserVO {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getSsn() {
+		return ssn;
 	}
 
 	public String getAddress() {
@@ -82,6 +86,10 @@ public class UserVO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
 	}
 
 	public void setAddress(String address) {
