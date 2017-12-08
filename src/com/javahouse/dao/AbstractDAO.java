@@ -19,14 +19,14 @@ public abstract class AbstractDAO {
 	
 	public abstract void query() throws Exception;
 	
-	public void init() throws Exception {
+	public final void init() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		String databaseURL = "jdbc:mysql://" + DB_URL + ":" + DB_PORT + "/" + DB_NAME;
 		conn = DriverManager.getConnection(databaseURL, DB_USER, DB_PASS);
 	}
 	
-	public void close() {
+	public final void close() {
 		if(rs != null) {
 			try {
 				rs.close();
