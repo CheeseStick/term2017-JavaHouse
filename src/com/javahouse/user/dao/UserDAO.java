@@ -3,13 +3,19 @@ package com.javahouse.user.dao;
 import com.javahouse.dao.AbstractDAO;
 import com.javahouse.dao.GenericDAO;
 import com.javahouse.user.vo.UserVO;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
+
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
 
 public class UserDAO implements GenericDAO<UserVO, Integer> {
-
+	
+	private static final String PASSWORD_SALT = "w8olxbEFubhCi40I";
+	
 	@Override
 	public void insert(final UserVO vo) throws Exception {
-		final String SQL_QUERY = "INSERT INTO User"
-				+ "(first_name, last_name, birthday, phone_no, address, address_detail, password, email, ssn, profile_photo_file_id)"
+		final String SQL_QUERY = "INSERT INTO User "
+				+ "(first_name, last_name, birthday, phone_no, address, address_detail, password, email, ssn, profile_photo_file_id) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		new AbstractDAO() {
@@ -23,7 +29,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 				stmt.setString(4, vo.getPhoneNo());
 				stmt.setString(5, vo.getAddress());
 				stmt.setString(6, vo.getAddressDetail());
-				stmt.setString(7, vo.getPassword());
+				stmt.setString(7, encryptPassword(vo.getPassword()));
 				stmt.setString(8, vo.getEmail());
 				stmt.setString(9, vo.getSsn());
 				stmt.setInt(10, vo.getProfilePhotoFileID());
@@ -35,9 +41,9 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 
 	@Override
 	public void update(final UserVO vo) throws Exception {
-		final String SQL_QUERY = "UPDATE User SET"
-				+ "first_name = ?, last_name = ?, birthday = ?, phone_no = ?, address = ?, address_detail = ?, password = ?,"
-				+ "ssn = ?, profile_photo_file_id = ?"
+		final String SQL_QUERY = "UPDATE User SET "
+				+ "first_name = ?, last_name = ?, birthday = ?, phone_no = ?, address = ?, address_detail = ?, password = ?, "
+				+ "ssn = ?, profile_photo_file_id = ? "
 				+ "WHERE user_id = ?";
 		
 		new AbstractDAO() {
@@ -63,7 +69,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 
 	@Override
 	public void delete(final Integer key) throws Exception {
-		final String SQL_QUERY = "DELETE FROM User"
+		final String SQL_QUERY = "DELETE FROM User "
 				+ "WHERE user_id = ?";
 		
 		new AbstractDAO() {
@@ -78,7 +84,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 
 	@Override
 	public UserVO select(final Integer key) throws Exception {
-		final String SQL_QUERY = "SELECT FROM User"
+		final String SQL_QUERY = "SELECT * FROM User "
 				+ "WHERE user_id = ?";
 		
 		final UserVO user = new UserVO();
@@ -109,4 +115,64 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 		return user;
 	}
 	
+	public boolean isDuplicatedEmail(final String email) throws Exception {
+		final String SQL_QUERY = "SELECT email FROM User "
+				+ "WHERE email = ?";
+		
+		final UserVO user = new UserVO();
+		
+		new AbstractDAO() {
+			@Override
+			public void query() throws Exception {
+				stmt = conn.prepareStatement(SQL_QUERY);
+				stmt.setString(1, email);	
+				rs = stmt.executeQuery();
+				
+				if(rs.next()) {
+					user.setEmail(rs.getString(1));
+				}
+				
+			}
+		}.execute();
+		
+		return !user.getEmail().isEmpty();
+	}
+	
+	public boolean isPasswordCorrect(final String email, final String password) throws Exception {
+		final String SQL_QUERY = "SELECT email, password FROM User "
+				+ "WHERE email = ?";
+		
+		final UserVO user = new UserVO();
+		
+		new AbstractDAO() {
+			@Override
+			public void query() throws Exception {
+				stmt = conn.prepareStatement(SQL_QUERY);
+				stmt.setString(1, email);
+				rs = stmt.executeQuery();
+				
+				if(rs.next()) {
+					if(rs.getString(2) == encryptPassword(password)) {
+						user.setEmail(rs.getString(1));
+					}
+				}
+				
+			}
+		}.execute();
+		
+		return !user.getEmail().isEmpty();
+		
+	}
+	
+	private String encryptPassword(final String password) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
+			byte[] bytes = password.concat(PASSWORD_SALT).getBytes(Charset.forName("UTF-8"));
+			md.update(bytes);
+			return Base64.encode(md.digest());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
