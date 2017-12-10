@@ -6,6 +6,15 @@ body {
 	background: #eee;
 }
 
+/* 링크 스타일 없애기 */
+a,
+a:hover,
+a:visited,
+a:link {
+	text-decoration: none;
+	color: inherit;
+}
+
 main {
 	padding-top: 4.0rem;
 }
@@ -31,12 +40,26 @@ main {
 	margin-bottom: 12px;
 }
 
+#form-signin .fa {
+	min-width: 16px;
+}
+
 #form-signin input {
 	font-size: 16px;
-	padding-top: 8px;
-    padding-bottom: 8px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#form-signin .input-group {
+	padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+#form-signin .address-input {
+    padding-top: 4px;
+    padding-bottom: 2px;
 }
 
 .footer {

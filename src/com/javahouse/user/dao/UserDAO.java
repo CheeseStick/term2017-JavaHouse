@@ -14,9 +14,13 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 	
 	@Override
 	public void insert(final UserVO vo) throws Exception {
+//		final String SQL_QUERY = "INSERT INTO User "
+//				+ "(first_name, last_name, birthday, phone_no, address, address_detail, password, email, ssn, profile_photo_file_id, is_host) "
+//				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		final String SQL_QUERY = "INSERT INTO User "
-				+ "(first_name, last_name, birthday, phone_no, address, address_detail, password, email, ssn, profile_photo_file_id, is_host) "
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(first_name, last_name, birthday, phone_no, address, address_detail, password, email, ssn, is_host) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		new AbstractDAO() {
 			@Override
@@ -32,10 +36,11 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 				stmt.setString(7, encryptPassword(vo.getPassword()));
 				stmt.setString(8, vo.getEmail());
 				stmt.setString(9, vo.getSsn());
-				stmt.setInt(10, vo.getProfilePhotoFileID());
-				stmt.setBoolean(11, vo.isHost());
+				// stmt.setInt(10, vo.getProfilePhotoFileID());
+				// stmt.setBoolean(11, vo.isHost());
+				stmt.setBoolean(10, vo.isHost());
 				
-				stmt.executeQuery();
+				stmt.executeUpdate();
 			}
 		}.execute();
 	}
@@ -154,7 +159,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 	}
 	
 	public boolean isDuplicatedEmail(final String email) throws Exception {
-		return selectWithEmail(email) != null;
+		return selectWithEmail(email).getEmail() != null;
 	}
 	
 	public boolean isPasswordCorrect(final String email, final String password) throws Exception {

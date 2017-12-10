@@ -27,6 +27,8 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
@@ -52,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("errors", errorMsgs);
 			request.getRequestDispatcher(JSP_TEMPLATE_FILENAME).forward(request, response);
 		} else {
-			// TODO: 로그인 처리
 			UserDAO dao = new UserDAO();
 			
 			try {
