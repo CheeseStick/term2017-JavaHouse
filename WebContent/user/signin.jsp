@@ -55,7 +55,8 @@
                     <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
                     <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required/>
                 </div>    
-                <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>   
+                <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+                <a class="btn-block" href="${pageContext.request.contextPath}/user/join"><input type="button" class="btn btn-lg btn-info btn-block" value="회원가입" /></a>   
             </form>
           </div>
         </div>
