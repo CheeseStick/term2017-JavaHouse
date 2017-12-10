@@ -19,6 +19,9 @@ public class UserVO {
 	private String password;
 	
 	private int profilePhotoFileID;
+	
+	private boolean isHost;
+	private boolean isAdmin;
 
 	public int getUserID() {
 		return userID;
@@ -63,6 +66,14 @@ public class UserVO {
 	public int getProfilePhotoFileID() {
 		return profilePhotoFileID;
 	}
+	
+	public boolean isHost() {
+		return isHost;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
 
 	public void setUserID(int userID) {
 		this.userID = userID;
@@ -106,5 +117,13 @@ public class UserVO {
 
 	public void setProfilePhotoFileID(int profilePhotoFileID) {
 		this.profilePhotoFileID = profilePhotoFileID;
+	}
+	
+	public void setHost(boolean isHost) {
+		this.isHost = isHost;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }

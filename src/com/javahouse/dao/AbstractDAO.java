@@ -9,7 +9,7 @@ public abstract class AbstractDAO {
 	private static final String DB_URL  = "127.0.0.1";
 	private static final String DB_PORT = "3306";
 	
-	private static final String DB_NAME = "JavaHouse";
+	private static final String DB_NAME = "javahouse";
 	private static final String DB_USER = "jsp_user";
 	private static final String DB_PASS = "password";
 	
@@ -22,7 +22,7 @@ public abstract class AbstractDAO {
 	public final void init() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		
-		String databaseURL = "jdbc:mysql://" + DB_URL + ":" + DB_PORT + "/" + DB_NAME;
+		String databaseURL = "jdbc:mysql://" + DB_URL + ":" + DB_PORT + "/" + DB_NAME + "?&useSSL=false";
 		conn = DriverManager.getConnection(databaseURL, DB_USER, DB_PASS);
 	}
 	

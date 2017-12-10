@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* 폰트 나눔고딕으로 전역 적용 */
+body {
+	font-family: 'Nanum Barun Gothic', sans-serif;
+	background: #eee;
+}
+
+main {
+	padding-top: 4.0rem;
+}
+
+.form-wrapper {
+	margin-top: 84px;
+	margin-bottom: 84px;
+}
+
+#form-signin {
+	max-width: 412px;
+	padding: 71px 31px 71px 31px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#form-signin .form-signin-heading {
+	padding-bottom: 8px;
+}
+
+#form-signin .input-group {
+	margin-bottom: 12px;
+}
+
+#form-signin input {
+	font-size: 16px;
+	padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.footer {
+	text-align: center;
+}
