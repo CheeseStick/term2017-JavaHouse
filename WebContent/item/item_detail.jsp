@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!doctype html>
 <html lang="ko">
@@ -33,10 +34,45 @@
             <div id="item-detail">
                 <h2 class="item-title"><c:out value="${item.itemTitle}" /></h2>
                 <p class="item-desc"><c:out value="${item.itemDesc}" /></p>
+                
+                <div class="item-date">
+	                계약 시작일: <fmt:formatDate pattern = "yyyy-MM-dd" value = "${item.contractStartDate}" /> <br/>
+		            계약 종료일: <fmt:formatDate pattern = "yyyy-MM-dd" value = "${item.contractEndDate}" /> <br/>
+	            </div>
+	            
+	            <div class="item-address">
+	                주소: <c:out value="${item.address}" /> <br/>
+	                상세주소: <c:out value="${item.addressDetail}" /> <br/>
+	                주택타입: <c:out value="${housingTypes[item.housingTypeID].name}" /> - 
+	                <c:out value="${residenceTypes[item.residenceTypeID].name}" />
+	            </div>
+	            
+	            <div class="item-price">
+	                계약종류: <c:out value="${contractTypes[item.contractTypeID].name}" /> <br/>
+                    보증금: <c:out value="${item.deposit}" /> 만원<br/>
+                    <c:out value="${paymentTypes[item.paymentTypeID].name}" />: <c:out value="${item.price}" /> 만원<br/>
+                </div>
+                
+                <hr/>
+                
+                <div class="item-options">
+                    옵션
+                    <ul>
+                      <c:if test="${option.hasTV}"><li>TV</li></c:if>
+                      <c:if test="${option.hasAC}"><li>에어컨</li></c:if>
+                      <c:if test="${option.hasWashingMachine}"><li>세탁기</li></c:if>
+                      
+                      <c:if test="${option.hasKitchen}"><li>주방</li></c:if>
+                      <c:if test="${option.hasRefrigerator}"><li>냉장고</li></c:if>
+                      <c:if test="${option.hasMicrowave}"><li>전자레인지</li></c:if>
+                      
+                      
+                      <c:if test="${option.hasBathroom}"><li>화장실 <c:if test="${option.isPublicBathroom}">(공용)</c:if></li></c:if>
+                      <c:if test="${option.hasBed}"><li>침대 (<c:out value="${option.bedCnt}" />개)</li></c:if>
+                    </ul>
+                </div>
+                
             </div>
-          
- 
-            
           </div>
         </div>
         <!-- 내부 컨텐츠 끝 -->
