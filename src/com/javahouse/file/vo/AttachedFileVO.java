@@ -18,6 +18,7 @@ public class AttachedFileVO {
 	public String getFileType() {
 		return fileType;
 	}
+	
 	public void setFileID(int fileID) {
 		this.fileID = fileID;
 	}

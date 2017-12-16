@@ -9,6 +9,11 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!--
+    // 
+    // 유저 관련 서블릿 
+    //
+    -->
   <servlet>
     <servlet-name>JoinServlet</servlet-name>
     <servlet-class>com.javahouse.user.servlet.JoinServlet</servlet-class>
@@ -21,6 +26,28 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.javahouse.user.servlet.LogoutServlet</servlet-class>
   </servlet>
+  <!--
+    // 
+    // 매물 관련 서블릿 
+    //
+    -->
+  <servlet>
+    <servlet-name>ItemAddServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ItemDetailServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemDetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ItemSearchServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemSearchServlet</servlet-class>
+  </servlet>
+  <!--
+    // 
+    // 유저 관련 서블릿 URL 맵핑
+    //
+    -->
   <servlet-mapping>
     <servlet-name>JoinServlet</servlet-name>
     <url-pattern>/user/join</url-pattern>
@@ -33,13 +60,35 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/user/logout</url-pattern>
   </servlet-mapping>
+  <!--
+    // 
+    // 매물 관련 서블릿 URL 맵핑
+    //
+    -->
+  <servlet-mapping>
+    <servlet-name>ItemSearchServlet</servlet-name>
+    <url-pattern>/item/search</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemDetailServlet</servlet-name>
+    <url-pattern>/item/detail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemAddServlet</servlet-name>
+    <url-pattern>/item/new</url-pattern>
+  </servlet-mapping>
   
+  <!--
+    // 
+    // 한글 사용을 위한 UTF-8 처리
+    //
+    -->
   <filter>
     <filter-name>setCharacterEncodingFilter</filter-name>
     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
     <init-param>
-        <param-name>encoding</param-name>
-        <param-value>UTF-8</param-value>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
     </init-param>
-    </filter>
+  </filter>
 </web-app>

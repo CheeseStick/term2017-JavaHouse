@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:if test="${not empty user_id}">
+<c:if test="${not empty user}">
     <c:redirect url="/" />
 </c:if>
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?123" />
 </head>
 
 <body>
@@ -56,7 +56,7 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required/>
                 </div>    
                 <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-                <a class="btn-block" href="${pageContext.request.contextPath}/user/join"><input type="button" class="btn btn-lg btn-info btn-block" value="회원가입" /></a>   
+                <a class="btn btn-lg btn-info btn-block" href="${pageContext.request.contextPath}/user/join" role="button">회원가입</a>   
             </form>
           </div>
         </div>

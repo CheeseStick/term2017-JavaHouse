@@ -59,12 +59,10 @@ public class LoginServlet extends HttpServlet {
 			try {
 				if(dao.isPasswordCorrect(vo.getEmail(), vo.getPassword())) {
 					vo = dao.selectWithEmail(vo.getEmail());
+					vo.setPassword("");
 					
 					HttpSession session = request.getSession();
-					session.setAttribute("user_id", vo.getUserID());
-					session.setAttribute("email", vo.getEmail());
-					session.setAttribute("isHost", vo.isHost());
-					session.setAttribute("isAdmin", vo.isAdmin());
+					session.setAttribute("user", vo);
 					
 					request.getRequestDispatcher(JSP_TEMPLATE_FILENAME).forward(request, response);
 				} else {

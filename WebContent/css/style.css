@@ -12,13 +12,14 @@ a:hover,
 a:visited,
 a:link {
 	text-decoration: none;
-	color: inherit;
 }
 
 main {
-	padding-top: 4.0rem;
+	padding-top: 3.5rem;
 }
 
+
+/* 폼 */
 .form-wrapper {
 	margin-top: 84px;
 	margin-bottom: 84px;
@@ -62,6 +63,40 @@ main {
     padding-bottom: 2px;
 }
 
-.footer {
+footer.container {
+	padding-top: 15px;
+	padding-bottom: 23px;
 	text-align: center;
+}
+
+
+/* 메인 */
+.overlay {
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 51px;
+	padding-bottom: 51px;
+	
+	background-color: #333;
+}
+
+.search-form {
+	padding: 15px;
+}
+
+/* 상세보기 */
+#item-detail {
+    max-width: 480x;
+    padding: 71px 31px 71px 31px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#item-detail .item-title {
+	padding-bottom: 8px;
+}
+
+#item-detail .item-desc {
+	color: #333;
 }

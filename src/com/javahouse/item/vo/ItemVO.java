@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ItemVO {
 	private int itemID;
+	private int hostID;
+	
 	private boolean isAvailable;
 	
 	private String itemTitle;
@@ -28,6 +30,9 @@ public class ItemVO {
 	
 	public int getItemID() {
 		return itemID;
+	}
+	public int getHostID() {
+		return hostID;
 	}
 	public boolean isAvailable() {
 		return isAvailable;
@@ -76,6 +81,9 @@ public class ItemVO {
 	}
 	public void setItemID(int itemID) {
 		this.itemID = itemID;
+	}
+	public void setHostID(int hostID) {
+		this.hostID = hostID;
 	}
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;

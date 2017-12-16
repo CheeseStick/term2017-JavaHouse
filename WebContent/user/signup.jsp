@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:if test="${not empty user_id}">
+<c:if test="${not empty user}">
     <c:redirect url="/" />
 </c:if>
 
@@ -56,12 +56,12 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></div>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required/>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 (8자이상)" required/>
                 </div>
                 
                 <div class="input-group">
                     <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="is_host" name="is_host" value="<c:out value="${requestScope.vo.host}"/>">
+                      <input type="checkbox" class="custom-control-input" id="is_host" name="is_host" value="true">
                       <span class="custom-control-indicator"></span>
                       <span class="custom-control-description">호스트로 가입하시려면 체크 해주세요.</span>
                     </label>
@@ -91,15 +91,15 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></div>
-                    <input type="datetime-local" class="form-control" id="birthday" name="birthday" placeholder="생일" value="<c:out value="${requestScope.vo.birthday}"/>" required/>
+                    <input type="datetime-local" class="form-control" id="birthday" name="birthday" placeholder="생일 (YYYY-MM-DD)" value="<c:out value="${requestScope.vo.birthday}"/>" required/>
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                    <input type="tel" class="form-control" id="phone_no" name="phone_no" placeholder="휴대폰 번호" value="<c:out value="${requestScope.vo.phoneNo}"/>" required/>
+                    <input type="tel" class="form-control" id="phone_no" name="phone_no" placeholder="휴대폰 번호 (-없이)" value="<c:out value="${requestScope.vo.phoneNo}"/>" required/>
                 </div>    
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-user-secret" aria-hidden="true"></i></div>
-                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="주민번호" value="<c:out value="${requestScope.vo.ssn}"/>" required/>
+                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="주민번호 (-없이)" value="<c:out value="${requestScope.vo.ssn}"/>" required/>
                 </div>  
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>   

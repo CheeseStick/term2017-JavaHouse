@@ -50,7 +50,7 @@ public class JoinServlet extends HttpServlet {
 		ArrayList<String> errorMsgs = new ArrayList<String>();
 		UserVO vo = new UserVO();
 		
-		vo.setHost(Boolean.getBoolean(isHost));
+		vo.setHost(Boolean.parseBoolean(isHost));
 		
 		if(firstname == null || lastname == null) {
 			hasError = true;

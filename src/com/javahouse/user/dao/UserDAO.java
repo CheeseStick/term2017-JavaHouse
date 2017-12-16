@@ -69,7 +69,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 				stmt.setInt(10, vo.getUserID());
 				stmt.setBoolean(11, vo.isHost());
 				
-				stmt.executeQuery();
+				stmt.executeUpdate();
 			}
 		}.execute();
 	}
@@ -166,7 +166,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 		final UserVO user = selectWithEmail(email);
 		
 		if(user != null) {
-			return user.getPassword().equals(password); // user.getPassword() == encryptPassword(password);
+			return user.getPassword().equals(encryptPassword(password));
 		} else {
 			return false;
 		}
