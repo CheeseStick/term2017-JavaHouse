@@ -172,7 +172,7 @@
                                    <li id="option-item" class="option-not-available">
                                </c:otherwise>
                            </c:choose>
-                           <div class="icon"><i class="fa fa-window-maximize fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="icon"><i class="fa fa-archive fa-fw fa-2x" aria-hidden="true"></i></div>
                            <div class="status">세탁기</div>
                            </li>
                            
@@ -211,7 +211,7 @@
                                    <li id="option-item" class="option-not-available">
                                </c:otherwise>
                            </c:choose>
-                           <div class="icon"><i class="fa fa-window-maximize fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="icon"><i class="fa fa-bolt fa-fw fa-2x" aria-hidden="true"></i></div>
                            <div class="status">전자레인지</div>
                            </li>
 
@@ -222,7 +222,11 @@
                 <hr/>
 
                 <c:choose>
-                  <c:when  test="${(host.userID == item.hostID) || user.admin}">
+                  <c:when test="${empty user}">
+                     <a class="btn btn-lg btn-primary btn-block" href="${pageContext.request.contextPath}/user/login" role="button">로그인</a>
+                  </c:when>
+                
+                  <c:when test="${(host.userID eq item.hostID) or user.admin}">
                       <a class="btn btn-lg btn-info btn-block" href="#" role="button">매물수정</a>
                       <a class="btn btn-lg btn-danger btn-block" href="#" role="button">매물삭제</a>
                   </c:when>
