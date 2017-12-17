@@ -3,10 +3,10 @@ package com.javahouse.user.dao;
 import com.javahouse.dao.AbstractDAO;
 import com.javahouse.dao.GenericDAO;
 import com.javahouse.user.vo.UserVO;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
+import java.util.Base64;
 
 public class UserDAO implements GenericDAO<UserVO, Integer> {
 	
@@ -177,7 +177,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
 			byte[] bytes = password.concat(PASSWORD_SALT).getBytes(Charset.forName("UTF-8"));
 			md.update(bytes);
-			return Base64.encode(md.digest());
+			return Base64.getEncoder().encodeToString(md.digest());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
