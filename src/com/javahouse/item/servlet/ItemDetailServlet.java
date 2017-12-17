@@ -19,6 +19,8 @@ import com.javahouse.item.vo.HousingTypeVO;
 import com.javahouse.item.vo.ItemVO;
 import com.javahouse.item.vo.PaymentTypeVO;
 import com.javahouse.item.vo.ResidenceTypeVO;
+import com.javahouse.user.dao.UserDAO;
+import com.javahouse.user.vo.UserVO;
 
 /**
  * Servlet implementation class ItemDetailServlet
@@ -46,6 +48,9 @@ public class ItemDetailServlet extends HttpServlet {
 				ResidenceTypeVO[] residenceTypes = new ResidenceTypeDAO().getAllRows();
 				HousingOptionVO option = new HousingOptionDAO().select(vo.getItemID());
 				
+				UserVO host = new UserDAO().select(vo.getHostID());
+				host.setPassword("");
+				
 				request.setAttribute("contractTypes", contractTypes);
 				request.setAttribute("housingTypes", housingTypes);
 				request.setAttribute("paymentTypes", paymentTypes);
@@ -53,6 +58,8 @@ public class ItemDetailServlet extends HttpServlet {
 				
 				request.setAttribute("item", vo);
 				request.setAttribute("option", option);
+				request.setAttribute("host", host);
+				
 				request.getRequestDispatcher(JSP_TEMPLATE_FILENAME).forward(request, response);				
 			}
 		} catch (NumberFormatException e) {

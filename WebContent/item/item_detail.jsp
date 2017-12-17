@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?124" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?1625" />
 </head>
 
 <body>
@@ -32,46 +32,205 @@
         <div class="container">
           <div class="form-wrapper animated bounceIn">
             <div id="item-detail">
-                <h2 class="item-title"><c:out value="${item.itemTitle}" /></h2>
-                <p class="item-desc"><c:out value="${item.itemDesc}" /></p>
-                
-                <div class="item-date">
-	                계약 시작일: <fmt:formatDate pattern = "yyyy-MM-dd" value = "${item.contractStartDate}" /> <br/>
-		            계약 종료일: <fmt:formatDate pattern = "yyyy-MM-dd" value = "${item.contractEndDate}" /> <br/>
-	            </div>
-	            
-	            <div class="item-address">
-	                주소: <c:out value="${item.address}" /> <br/>
-	                상세주소: <c:out value="${item.addressDetail}" /> <br/>
-	                주택타입: <c:out value="${housingTypes[item.housingTypeID].name}" /> - 
-	                <c:out value="${residenceTypes[item.residenceTypeID].name}" />
-	            </div>
-	            
-	            <div class="item-price">
-	                계약종류: <c:out value="${contractTypes[item.contractTypeID].name}" /> <br/>
-                    보증금: <c:out value="${item.deposit}" /> 만원<br/>
-                    <c:out value="${paymentTypes[item.paymentTypeID].name}" />: <c:out value="${item.price}" /> 만원<br/>
+                <div class="item-heading">
+                    <div class="title-bar">
+                        <div class="item-title"><c:out value="${item.itemTitle}" /></div>
+                        <c:choose>
+                          <c:when test="${item.available}">
+                              <div class="item-status available">계약가능</div>
+                          </c:when>
+                          <c:otherwise>
+                              <div class="item-status not-available">계약완료</div>
+                          </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
+
+                <div class="item-element">
+                    <div class="item-group">
+                        <div class="title">호스트 이름</div>
+                        <div class="data"><c:out value="${host.firstName} ${host.lastName}" /></div>
+                    </div>
+                    
+                    <div class="item-group">
+                        <div class="title">매물 설명</div>
+                        <div class="data"><c:out value="${item.itemDesc}" /></div>
+                    </div>
                 </div>
                 
+                <div class="item-element">
+                    <div class="item-group">
+		                <div class="title">계약 시작일</div>
+		                <div class="data"><fmt:formatDate pattern = "yyyy년 MM월 dd일" value = "${item.contractStartDate}" /> 부터</div>
+	                </div>
+	                
+	                <div class="item-group">
+			            <div class="title">계약 종료일</div>
+			            <div class="data"><fmt:formatDate pattern = "yyyy년 MM월 dd일" value = "${item.contractEndDate}" /> 까지</div>
+		            </div>
+	            </div>
+	            
+	            <div class="item-element">
+	                <div class="item-group">
+	                   <div class="title">주소</div>
+                        <div class="data"><c:out value="${item.address}" /></div>
+                    </div>
+                    
+                    <div class="item-group">
+                        <div class="title">상세주소</div>
+                        <div class="data"><c:out value="${item.addressDetail}" /></div>
+                    </div>
+                    
+                    <div class="item-group">
+                        <div class="title">주택타입</div>
+                        <div class="data">
+                            <c:out value="${housingTypes[item.housingTypeID].name}" /> - 
+                            <c:out value="${residenceTypes[item.residenceTypeID].name}" />    
+                        </div>
+                    </div>
+	            </div>
+	            
+	            <div class="item-element">
+	                <div class="item-group">
+	                   <div class="title">계약종류</div>
+                        <div class="data"><c:out value="${contractTypes[item.contractTypeID].name}" /></div>
+                    </div>
+                    
+                    <div class="item-group">
+                        <div class="title">보증금</div>
+                        <div class="data"><c:out value="${item.deposit}" /> 만원</div>
+                    </div>
+                    
+                    <div class="item-group">
+                        <div class="title"><c:out value="${paymentTypes[item.paymentTypeID].name}" /></div>
+                        <div class="data"><c:out value="${item.price}" /> 만원</div>
+                    </div>
+                </div>
+                
+                <div id="option-element">
+                    <div class="heading"><span>옵션</span></div>
+                    <div class="option-list">
+	                    <ul>
+	                       <c:choose>
+                               <c:when test="${option.hasBed}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-bed fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">침대(<c:out value="${option.bedCnt}" />개)</div>
+                           </li>
+                          
+                          <c:choose>
+                               <c:when test="${option.hasBathroom}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-bath fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">화장실<c:if test="${option.publicBathroom}">(공용)</c:if></div>
+                           </li>
+
+	                       <c:choose>
+	                           <c:when test="${option.hasTV}">
+		                           <li id="option-item" class="option-available">
+	                           </c:when>
+	                           
+	                           <c:otherwise>
+	                               <li id="option-item" class="option-not-available">
+	                           </c:otherwise>
+	                       </c:choose>
+	                       <div class="icon"><i class="fa fa-television fa-fw fa-2x" aria-hidden="true"></i></div>
+	                       <div class="status">케이블 TV</div>
+                           </li>
+	                       
+	                       <c:choose>
+                               <c:when test="${option.hasAC}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-thermometer-three-quarters fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">에어컨</div>
+                           </li>
+                           
+                           <c:choose>
+                               <c:when test="${option.hasWashingMachine}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-window-maximize fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">세탁기</div>
+                           </li>
+                           
+                           <c:choose>
+                               <c:when test="${option.hasKitchen}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-cutlery fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">주방</div>
+                           </li>
+                           
+                           <c:choose>
+                               <c:when test="${option.hasRefrigerator}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-snowflake-o fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">냉장고</div>
+                           </li>
+                           
+                           <c:choose>
+                               <c:when test="${option.hasMicrowave}">
+                                   <li id="option-item" class="option-available">
+                               </c:when>
+                               
+                               <c:otherwise>
+                                   <li id="option-item" class="option-not-available">
+                               </c:otherwise>
+                           </c:choose>
+                           <div class="icon"><i class="fa fa-window-maximize fa-fw fa-2x" aria-hidden="true"></i></div>
+                           <div class="status">전자레인지</div>
+                           </li>
+
+	                    </ul>
+                    </div>
+                </div>
+
                 <hr/>
-                
-                <div class="item-options">
-                    옵션
-                    <ul>
-                      <c:if test="${option.hasTV}"><li>TV</li></c:if>
-                      <c:if test="${option.hasAC}"><li>에어컨</li></c:if>
-                      <c:if test="${option.hasWashingMachine}"><li>세탁기</li></c:if>
-                      
-                      <c:if test="${option.hasKitchen}"><li>주방</li></c:if>
-                      <c:if test="${option.hasRefrigerator}"><li>냉장고</li></c:if>
-                      <c:if test="${option.hasMicrowave}"><li>전자레인지</li></c:if>
-                      
-                      
-                      <c:if test="${option.hasBathroom}"><li>화장실 <c:if test="${option.isPublicBathroom}">(공용)</c:if></li></c:if>
-                      <c:if test="${option.hasBed}"><li>침대 (<c:out value="${option.bedCnt}" />개)</li></c:if>
-                    </ul>
-                </div>
-                
+
+                <c:choose>
+                  <c:when  test="${(host.userID == item.hostID) || user.admin}">
+                      <a class="btn btn-lg btn-info btn-block" href="#" role="button">매물수정</a>
+                      <a class="btn btn-lg btn-danger btn-block" href="#" role="button">매물삭제</a>
+                  </c:when>
+                  
+                  <c:otherwise>
+                      <a class="btn btn-lg btn-primary btn-block" href="#" role="button"><i class="fa fa-envelope" aria-hidden="true"></i> 메시지 전송</a>
+                  </c:otherwise>
+                </c:choose>                
             </div>
           </div>
         </div>

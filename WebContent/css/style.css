@@ -86,17 +86,137 @@ footer.container {
 
 /* 상세보기 */
 #item-detail {
-    max-width: 480x;
+    max-width: 500px;
     padding: 71px 31px 71px 31px;
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#item-detail .item-title {
+#item-detail .item-heading {
+	padding-bottom: 16px;
+}
+
+#item-detail .title-bar {
+	overflow: hidden;
 	padding-bottom: 8px;
+	border-bottom: 1px solid #ccc;
+}
+
+#item-detail .item-title {
+	display: inline-block;
+	height: auto;
+	float: left;
+	font-weight: 800;
+	font-size: 26px;
+}
+
+#item-detail .item-status {
+    display: inline-block;
+    float: right;
+    color: #FFF;
+    padding: 4px;
+}
+
+.available {
+	border-radius: 4px;
+    background: #81c226;
+}
+
+.not-available {
+	border-radius: 4px;
+    background: #c23a26;
 }
 
 #item-detail .item-desc {
+	border: 1px solid #F00;
 	color: #333;
+}
+
+#item-detail .item-element {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	height: auto;
+	
+}
+
+#item-detail .item-group {
+    height: auto;
+    line-height: 35px;
+    overflow: hidden;
+}
+
+#item-detail .title {
+	display: table-cell;
+	min-width: 97px;
+	text-align: center;
+	background-color: #343A40;
+	color: #FFF;
+	height: 100%;
+}
+
+#item-detail span {
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+#item-detail .title:nth-child(2n+1) {
+    border-bottom: 1px solid #FFF;
+}
+
+#item-detail .data {
+	display: table-cell;
+	padding-left: 13px;
+}
+
+#option-element {
+	padding-bottom: 9px;
+}
+
+#option-element .heading {
+	font-weight: 800;
+    font-size: 17px;
+    color: #FFF;
+    background-color: #343A40;
+    height: 29px;
+    line-height: 29px;
+    padding-left: 3px;
+}
+
+#option-element ul {
+	text-decoration: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#option-item {
+	border-radius: 4px;
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	text-align: center;
+	color: #FFF;
+	margin: 7px;
+	padding: 5px;
+}
+
+#option-item .icon {
+	height: 60%;
+	padding: 9px;
+}
+
+#option-item .status {
+	height: 39%;
+	padding-top: 7px;
+	font-size: 11px;
+}
+
+.option-available {
+	background-color: #048CCE;
+}
+
+.option-not-available {
+	background-color: #919191;
 }
