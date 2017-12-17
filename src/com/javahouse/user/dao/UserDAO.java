@@ -165,7 +165,7 @@ public class UserDAO implements GenericDAO<UserVO, Integer> {
 	public boolean isPasswordCorrect(final String email, final String password) throws Exception {
 		final UserVO user = selectWithEmail(email);
 		
-		if(user != null) {
+		if(user.getEmail() != null) {
 			return user.getPassword().equals(encryptPassword(password));
 		} else {
 			return false;
