@@ -171,6 +171,7 @@ footer.container {
 }
 
 #option-element {
+	padding-top: 9px;
 	padding-bottom: 9px;
 }
 
@@ -181,7 +182,7 @@ footer.container {
     background-color: #343A40;
     height: 29px;
     line-height: 29px;
-    padding-left: 3px;
+    padding-left: 9px;
 }
 
 #option-element ul {
@@ -189,6 +190,7 @@ footer.container {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 
 #option-item {
@@ -198,7 +200,7 @@ footer.container {
 	height: 75px;
 	text-align: center;
 	color: #FFF;
-	margin: 7px;
+	margin: 11px;
 	padding: 5px;
 }
 
