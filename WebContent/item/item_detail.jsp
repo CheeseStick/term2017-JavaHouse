@@ -84,8 +84,8 @@
                     <div class="item-group">
                         <div class="title">주택타입</div>
                         <div class="data">
-                            <c:out value="${housingTypes[item.housingTypeID].name}" /> - 
-                            <c:out value="${residenceTypes[item.residenceTypeID].name}" />    
+                            <c:out value="${housingTypes[item.housingTypeID - 1].name}" /> - 
+                            <c:out value="${residenceTypes[item.residenceTypeID - 1].name}" />    
                         </div>
                     </div>
 	            </div>
@@ -93,7 +93,7 @@
 	            <div class="item-element">
 	                <div class="item-group">
 	                   <div class="title">계약종류</div>
-                        <div class="data"><c:out value="${contractTypes[item.contractTypeID].name}" /></div>
+                        <div class="data"><c:out value="${contractTypes[item.contractTypeID - 1].name}" /></div>
                     </div>
                     
                     <div class="item-group">
@@ -102,7 +102,7 @@
                     </div>
                     
                     <div class="item-group">
-                        <div class="title"><c:out value="${paymentTypes[item.paymentTypeID].name}" /></div>
+                        <div class="title"><c:out value="${paymentTypes[item.paymentTypeID - 1].name}" /></div>
                         <div class="data"><c:out value="${item.price}" /> 만원</div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@
 
                 <c:choose>
                   <c:when test="${empty user}">
-                     <a class="btn btn-lg btn-primary btn-block" href="${pageContext.request.contextPath}/user/login" role="button">로그인</a>
+                     <a class="btn btn-lg btn-primary btn-block" href="${pageContext.request.contextPath}/user/login" role="button">로그인하고 메시지 보내기</a>
                   </c:when>
                 
                   <c:when test="${(host.userID eq item.hostID) or user.admin}">

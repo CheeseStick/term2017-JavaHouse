@@ -222,3 +222,28 @@ footer.container {
 .option-not-available {
 	background-color: #919191;
 }
+
+/* 아이템 전체 리스트 */
+#item-list {
+    max-width: 960px;
+    padding: 71px 31px 71px 31px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#item-list .item-status {
+    display: inline-block;
+    color: #FFF;
+    padding: 4px;
+}
+
+.available {
+    border-radius: 4px;
+    background: #81c226;
+}
+
+.not-available {
+    border-radius: 4px;
+    background: #c23a26;
+}

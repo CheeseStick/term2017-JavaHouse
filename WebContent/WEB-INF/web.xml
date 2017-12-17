@@ -9,11 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!--
-    // 
-    // 유저 관련 서블릿 
-    //
-    -->
   <servlet>
     <servlet-name>JoinServlet</servlet-name>
     <servlet-class>com.javahouse.user.servlet.JoinServlet</servlet-class>
@@ -26,11 +21,6 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.javahouse.user.servlet.LogoutServlet</servlet-class>
   </servlet>
-  <!--
-    // 
-    // 매물 관련 서블릿 
-    //
-    -->
   <servlet>
     <servlet-name>ItemAddServlet</servlet-name>
     <servlet-class>com.javahouse.item.servlet.ItemAddServlet</servlet-class>
@@ -43,11 +33,10 @@
     <servlet-name>ItemSearchServlet</servlet-name>
     <servlet-class>com.javahouse.item.servlet.ItemSearchServlet</servlet-class>
   </servlet>
-  <!--
-    // 
-    // 유저 관련 서블릿 URL 맵핑
-    //
-    -->
+  <servlet>
+    <servlet-name>ItemListServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemListServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>JoinServlet</servlet-name>
     <url-pattern>/user/join</url-pattern>
@@ -60,11 +49,6 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/user/logout</url-pattern>
   </servlet-mapping>
-  <!--
-    // 
-    // 매물 관련 서블릿 URL 맵핑
-    //
-    -->
   <servlet-mapping>
     <servlet-name>ItemSearchServlet</servlet-name>
     <url-pattern>/item/search</url-pattern>
@@ -77,12 +61,10 @@
     <servlet-name>ItemAddServlet</servlet-name>
     <url-pattern>/item/new</url-pattern>
   </servlet-mapping>
-  
-  <!--
-    // 
-    // 한글 사용을 위한 UTF-8 처리
-    //
-    -->
+  <servlet-mapping>
+    <servlet-name>ItemListServlet</servlet-name>
+    <url-pattern>/item/all</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>setCharacterEncodingFilter</filter-name>
     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>

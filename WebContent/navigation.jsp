@@ -14,7 +14,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}">홈 <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/item/search">매물찾기</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/item/all">모든 매물 보기</a>
           </li>
           
           <c:if test="${user.host || user.admin}">

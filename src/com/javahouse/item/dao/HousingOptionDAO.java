@@ -1,5 +1,7 @@
 package com.javahouse.item.dao;
 
+import java.util.ArrayList;
+
 import com.javahouse.dao.AbstractDAO;
 import com.javahouse.dao.GenericDAO;
 import com.javahouse.item.vo.HousingOptionVO;
@@ -111,5 +113,42 @@ public class HousingOptionDAO implements GenericDAO<HousingOptionVO, Integer> {
 		}.execute();
 		
 		return vo;
+	}
+	
+	public HousingOptionVO[] getAllRows() throws Exception {
+		final String SQL_QUERY = "SELECT * FROM HousingOption";
+		
+		ArrayList<HousingOptionVO> voArr = new ArrayList<HousingOptionVO>();
+		
+		new AbstractDAO() {
+			@Override
+			public void query() throws Exception {
+				stmt = conn.prepareStatement(SQL_QUERY);
+				rs = stmt.executeQuery();
+				
+				while(rs.next()) {
+					HousingOptionVO vo = new HousingOptionVO();
+					
+					vo.setItemID(rs.getInt(1));
+					vo.setHasTV(rs.getBoolean(2));
+					vo.setHasRefrigerator(rs.getBoolean(3));
+					vo.setHasMicrowave(rs.getBoolean(4));
+					
+					vo.setHasBed(rs.getBoolean(5));
+					vo.setBedCnt(rs.getInt(6));
+					
+					vo.setHasBathroom(rs.getBoolean(7));
+					vo.setPublicBathroom(rs.getBoolean(8));
+					
+					vo.setHasAC(rs.getBoolean(9));
+					vo.setHasWashingMachine(rs.getBoolean(10));
+					vo.setHasKitchen(rs.getBoolean(11));
+					
+					voArr.add(vo);
+				}	
+			}
+		}.execute();
+		
+		return voArr.toArray(new HousingOptionVO[voArr.size()]);
 	}
 }
