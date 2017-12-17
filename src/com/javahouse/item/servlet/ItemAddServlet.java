@@ -24,6 +24,7 @@ import com.javahouse.item.vo.HousingTypeVO;
 import com.javahouse.item.vo.ItemVO;
 import com.javahouse.item.vo.PaymentTypeVO;
 import com.javahouse.item.vo.ResidenceTypeVO;
+import com.javahouse.user.vo.UserVO;
 
 @WebServlet("/ItemAddServlet")
 public class ItemAddServlet extends HttpServlet {
@@ -59,8 +60,13 @@ public class ItemAddServlet extends HttpServlet {
 		HousingOptionVO option = new HousingOptionVO();
 		
 		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute("user");
 		
-		item.setHostID(Integer.parseInt((String)session.getAttribute("user_id")));
+		if(user == null) {
+			response.sendRedirect(request.getContextPath() + "/user/login");
+		}
+		
+		item.setHostID(user.getUserID());
 		
 		item.setItemTitle(request.getParameter("name"));
 		item.setItemDesc(request.getParameter("desc"));

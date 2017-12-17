@@ -63,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 					
 					HttpSession session = request.getSession();
 					session.setAttribute("user", vo);
+					session.setMaxInactiveInterval(2*60*60); // 세션은 2시간 유지
 					
 					request.getRequestDispatcher(JSP_TEMPLATE_FILENAME).forward(request, response);
 				} else {
