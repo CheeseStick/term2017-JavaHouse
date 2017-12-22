@@ -39,6 +39,8 @@ public class ItemDeleteServlet extends HttpServlet {
 					} else {
 						response.sendRedirect(request.getContextPath() + "/item/detail?id=" + vo.getItemID());
 					}
+				} else {
+					response.sendRedirect(request.getContextPath() + "/item/all");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

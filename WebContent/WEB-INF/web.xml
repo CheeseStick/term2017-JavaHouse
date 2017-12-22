@@ -41,6 +41,10 @@
     <servlet-name>ItemDeleteServlet</servlet-name>
     <servlet-class>com.javahouse.item.servlet.ItemDeleteServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ItemEditServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemEditServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>JoinServlet</servlet-name>
     <url-pattern>/user/join</url-pattern>
@@ -72,6 +76,10 @@
   <servlet-mapping>
     <servlet-name>ItemListServlet</servlet-name>
     <url-pattern>/item/all</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemEditServlet</servlet-name>
+    <url-pattern>/item/edit</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>setCharacterEncodingFilter</filter-name>

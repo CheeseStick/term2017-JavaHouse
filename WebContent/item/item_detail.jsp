@@ -226,8 +226,8 @@
                      <a class="btn btn-lg btn-primary btn-block" href="${pageContext.request.contextPath}/user/login" role="button">로그인하고 메시지 보내기</a>
                   </c:when>
                 
-                  <c:when test="${(host.userID eq item.hostID) or user.admin}">
-                      <a class="btn btn-lg btn-info btn-block" href="#" role="button">매물수정</a>
+                  <c:when test="${host.userID eq item.hostID}">
+                      <a class="btn btn-lg btn-info btn-block" href="${pageContext.request.contextPath}/item/edit?id=${item.itemID}" role="button">매물수정</a>
                       <a class="btn btn-lg btn-danger btn-block" href="${pageContext.request.contextPath}/item/delete?id=${item.itemID}" role="button">매물삭제</a>
                   </c:when>
                   
