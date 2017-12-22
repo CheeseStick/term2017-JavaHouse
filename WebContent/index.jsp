@@ -33,7 +33,8 @@
 	          <h1 class="display-1 text-white">JAVA HOUSE</h1>
 	          <h2 class="display-4 text-white">원하시는 장소를 검색하세요</h2>
 	          <div class="search-form">
-		          <form class="form-inline" method="get" action="${pageContext.request.contextPath}/item/search">
+		          <%-- <form class="form-inline" method="get" action="${pageContext.request.contextPath}/item/search"> --%>
+		          <form class="form-inline" method="get" action="${pageContext.request.contextPath}/item/all">
 	                <input type="text" class="search-query form-control" id="keyword" name="keyword" placeholder="검색..." />
 	                <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
 	              </form>
@@ -52,8 +53,8 @@
 	          </div>
 	          <div class="col-md-6 order-1">
 	            <div class="p-5">
-	              <h2 class="display-4">전국에 많은 방들이 있습니다..</h2>
-	              <p> 전대 ,하숙 등등을 제공합니다. 또한 이러이러한 서비스를 제공합니다. 전대 ,하숙 등등을 제공합니다. 또한 이러이러한 서비스를 제공합니다. 전대 ,하숙 등등을 제공합니다. 또한 이러이러한 서비스를 제공합니다. </p>
+	              <h2 class="display-4">JAVA HOUSE 소개</h2>
+	              <p>서울에서 호스팅으로 매주 최대 ₩561,761의 수입을 올리세요.<br>남는 공간으로 수입을 올려보세요. </p>
 	            </div>
 	          </div>
 	        </div>

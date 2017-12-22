@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:if test="${not empty user}">
     <c:redirect url="/" />
@@ -91,7 +92,7 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></div>
-                    <input type="datetime-local" class="form-control" id="birthday" name="birthday" placeholder="생일 (YYYY-MM-DD)" value="<c:out value="${requestScope.vo.birthday}"/>" required/>
+                    <input type="datetime-local" class="form-control" id="birthday" name="birthday" placeholder="생일 (YYYY-MM-DD)" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${requestScope.vo.birthday}" />" required/>
                 </div>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></div>

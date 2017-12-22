@@ -37,6 +37,10 @@
     <servlet-name>ItemListServlet</servlet-name>
     <servlet-class>com.javahouse.item.servlet.ItemListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ItemDeleteServlet</servlet-name>
+    <servlet-class>com.javahouse.item.servlet.ItemDeleteServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>JoinServlet</servlet-name>
     <url-pattern>/user/join</url-pattern>
@@ -60,6 +64,10 @@
   <servlet-mapping>
     <servlet-name>ItemAddServlet</servlet-name>
     <url-pattern>/item/new</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemDeleteServlet</servlet-name>
+    <url-pattern>/item/delete</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ItemListServlet</servlet-name>

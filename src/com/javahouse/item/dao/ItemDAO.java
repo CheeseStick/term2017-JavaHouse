@@ -98,7 +98,17 @@ public class ItemDAO implements GenericDAO<ItemVO, Integer> {
 
 	@Override
 	public void delete(final Integer key) throws Exception {
-		throw new Exception();
+		final String SQL_QUERY = "DELETE FROM Item "
+				+ "WHERE item_id = ?";
+		
+		new AbstractDAO() {
+			@Override
+			public void query() throws Exception {
+				stmt = conn.prepareStatement(SQL_QUERY);
+				stmt.setInt(1, key);	
+				stmt.executeUpdate();
+			}
+		}.execute();
 	}
 
 	@Override

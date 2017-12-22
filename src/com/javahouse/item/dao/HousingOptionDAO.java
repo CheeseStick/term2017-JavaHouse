@@ -76,7 +76,17 @@ public class HousingOptionDAO implements GenericDAO<HousingOptionVO, Integer> {
 
 	@Override
 	public void delete(final Integer key) throws Exception {
-		throw new Exception();
+		final String SQL_QUERY = "DELETE FROM HousingOption "
+				+ "WHERE item_id = ?";
+		
+		new AbstractDAO() {
+			@Override
+			public void query() throws Exception {
+				stmt = conn.prepareStatement(SQL_QUERY);
+				stmt.setInt(1, key);	
+				stmt.executeUpdate();
+			}
+		}.execute();
 	}
 
 	@Override

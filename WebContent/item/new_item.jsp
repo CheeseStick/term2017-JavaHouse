@@ -154,7 +154,7 @@
                       <span class="custom-control-indicator"></span>
                       <span class="custom-control-description">침대</span>
                     </label>
-                    <input type="number" class="form-control" id="bed_cnt" name="bed_cnt" placeholder="침대개수" />
+                    <input type="number" class="form-control" id="bed_cnt" name="bed_cnt" placeholder="침대개수" value="0"/>
                 </div>
                 <div class="input-group">
                     <label class="custom-control custom-checkbox">
